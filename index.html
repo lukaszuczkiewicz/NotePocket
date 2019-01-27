@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NotePocket</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- create/edit note popup -->
+    <div class="create-note__background hide" id="new-note-popup">
+        <form class="create-note__window">
+            <input class="create-note__title" id="create-note__title" type="text" name="title" placeholder="Title...">
+            <input class="create-note__content" id="create-note__content" type="text" name="title" placeholder="Your note...">
+            <button type="button" class="create-note__cancel">X</bu>
+            <label for="create-note__pin">Pin</label>
+            <input type="checkbox" name="create-note__pin" id="create-note__pin">
+            <input type="color" name="create-note__color" id="create-note__color">
+            <input type="date" name="create-note__notification" id="create-note__notification">
+            <button type="button" class="create-note__confirm" id="create-note__confirm">OK</button>
+        </form>
+    </div>
+
+    <header class="header">
+        <h1 class="heading-1">NotePocket</h1>
+        <form class="search__form">
+            <input class="search__input" type="text" name="search" placeholder="Search..">
+        </form>
+    </header>
+
+    <main class="main">
+        <button class="create-note-btn" id="create-note-btn">Create a new note</button>
+
+        <h3 class="heading-3">Pinned</h3>
+        <div class="notes notes--pinned" id="pinned">
+            <!-- <div class="notes__note">
+                <h2 class="heading-2">Note title</h2>
+                <p class="notes__note__date">25.01.2019</p>
+                <p class="notes__note__content">This is a content of a note.</p>
+            </div> -->
+        </div>
+
+        <!-- <h3 class="heading-3 notes__title">Others</h3> -->
+        <h3 class="heading-3">Others</h3>
+        <div class="notes notes--other" id="other">
+            <!-- notes here -->
+        </div>
+    </main>
+
+    <footer class="footer">&copy; Ł. Uczkiewicz 2019</footer>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
