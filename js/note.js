@@ -19,12 +19,12 @@ export default class Note {
     }
     display() {
         const noteHtml = `
-        <div class="notes__note">
+        <div class="notes__note" data-id="${this.id}">
             <h2 class="heading-2">${this.title}</h2>
             <p class="notes__note__date">${this.date}</p>
             <p class="notes__note__content">${this.content}</p>
             <p class="notes__note__notification">${this.notificationDate}</p>
-            <button class="notes__note__edit" data-id="${this.id}">EDIT</button>
+            <button class="notes__note__edit">EDIT</button>
         </div>
         `;
 
@@ -33,5 +33,8 @@ export default class Note {
         } else {
             otherNotes.innerHTML += noteHtml;
         }
+
+        // set note color
+        document.querySelector(`[data-id="${this.id}"]`).style.backgroundColor = this.color;
     }
 }
