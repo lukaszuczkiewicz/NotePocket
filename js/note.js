@@ -24,7 +24,6 @@ export default class Note {
             <p class="notes__note__date">${this.date}</p>
             <p class="notes__note__content">${this.content}</p>
             <p class="notes__note__notification">${this.notificationDate}</p>
-            <button class="notes__note__edit">EDIT</button>
         </div>
         `;
 

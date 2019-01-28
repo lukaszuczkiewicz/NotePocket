@@ -67,7 +67,7 @@ body {
 
 .create-note__background {
   position: absolute;
-  background-color: rgba(121, 132, 148, 0.9);
+  background-color: rgba(121, 132, 148, 0.96);
   top: 0;
   left: 0;
   width: 100%;
@@ -75,7 +75,7 @@ body {
 
 .create-note__window {
   padding: 3rem;
-  background-color: rgba(245, 246, 246, 0.95);
+  background-color: rgba(245, 246, 246, 0.9);
   border-radius: 5px;
   position: fixed;
   top: 40vh;
@@ -107,16 +107,20 @@ body {
   grid-gap: 2rem;
   justify-content: center; }
   .notes__note {
-    border: 1px #1F1F2E solid;
+    border: 2px transparent solid;
     border-radius: 5px;
     padding: 1rem;
     background-color: #fff;
+    transition: all .2s;
     cursor: pointer; }
     .notes__note__content {
       font-size: 1.4rem; }
     .notes__note__date {
       color: #1F1F2E;
       font-size: 1.3rem; }
+    .notes__note:hover {
+      box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.02);
+      border: 2px #798494 solid; }
 
 .header {
   background-color: #9CA1A8;

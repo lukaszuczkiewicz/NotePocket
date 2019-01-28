@@ -92,7 +92,7 @@ body {
 .create-note { 
     &__background {
         position: absolute;
-        background-color: rgba($color-2, 0.9);
+        background-color: rgba($color-2, 0.96);
         top: 0;
         left: 0;
         width: 100%;
@@ -100,7 +100,7 @@ body {
     }
     &__window {
         padding: 3rem;
-        background-color: rgba($color-1, 0.95);
+        background-color: rgba($color-1, 0.90);
         border-radius: 5px;
         position: fixed;
         top: 40vh;
@@ -139,10 +139,11 @@ body {
     justify-content: center;
     
     &__note {
-        border: 1px #1F1F2E solid;
+        border: 2px transparent solid;
         border-radius: 5px;
         padding: 1rem;
         background-color: $color-white;
+        transition: all .2s;
         
         cursor: pointer;
         
@@ -152,6 +153,10 @@ body {
         &__date {
             color: $color-5;
             font-size: 1.3rem;
+        }
+        &:hover {
+            box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.02);
+            border: 2px $color-2 solid;
         }
     }
     // &__title {
