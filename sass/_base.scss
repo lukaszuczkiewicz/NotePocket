@@ -63,21 +63,17 @@ body {
         }
     }
 }
-//CREATE A NEW NOTE
-.create-note-btn {
+@mixin btn {
     border: none;
     text-transform: uppercase;
-    padding: 1.5rem 3.5rem;
-    font-size: 1.8rem;
     font-family: inherit;
     font-weight: 700;
     border-radius: 300px;
-    margin-bottom: 4rem;
     background-color: $color-2;
     transition: all .2s;
     cursor: pointer;
     outline: none;
-
+    
     &:hover,
     &:focus {
         background-color: $color-5;
@@ -87,6 +83,13 @@ body {
         transform: scale(1.05);
         box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.3);
     }
+}
+//CREATE A NEW NOTE
+.create-note-btn {
+    @include btn;
+    font-size: 1.8rem;
+    margin-bottom: 4rem;
+    padding: 1.5rem 3.5rem;
 }
 //popup
 .create-note { 
@@ -107,21 +110,59 @@ body {
         left: 50vw;
         transform: translate(-50%, -50%);
         box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.3);
-        max-width: 60rem;
+        max-width: 200rem;
 
-        display: grid;
-        //dokoncz grida
+        display: flex;
+        flex-direction: column;
     }
     &__cancel {
         position: absolute;
-        top: 0;
-        right: 0;
-        padding: 2rem;
-        background-color: orange;
+        top: .6rem;
+        right: .6rem;
+        background: url(../icons/cancel.png);
+        background-size: cover;
         height: 2rem;
         width: 2rem;
-        border-radius: 50%;
-        columns: $color-white;
+        border: none;
+        outline: none;
+        border-radius: 100%;
+
+        &:active, &:focus {
+            border: 1px solid $color-5;
+        }
+    }
+    &__title {
+        padding: 1rem;
+        border: 1px solid $color-2;
+        border-radius: 4px;
+        outline: none;
+
+        &:active, &:focus {
+            border: 1px solid $color-5;
+        }
+    }
+    &__content {
+        margin-top: 1rem;
+        resize: none;
+        padding: 1rem;
+        border: 1px solid $color-2;
+        border-radius: 4px;
+        outline: none;
+        
+        &:active, &:focus {
+            border: 1px solid $color-5;
+        }
+    }
+    &__input-container {
+        margin: 1rem 0;
+        font-size: 1.6rem;
+    }
+    &__confirm {
+        @include btn;
+        width: 7rem;
+        padding: .4rem .6rem;
+        margin: auto;
+        margin-top: 3rem;
     }
 }
 .hide {

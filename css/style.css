@@ -48,16 +48,16 @@ body {
 .create-note-btn {
   border: none;
   text-transform: uppercase;
-  padding: 1.5rem 3.5rem;
-  font-size: 1.8rem;
   font-family: inherit;
   font-weight: 700;
   border-radius: 300px;
-  margin-bottom: 4rem;
   background-color: #798494;
   transition: all .2s;
   cursor: pointer;
-  outline: none; }
+  outline: none;
+  font-size: 1.8rem;
+  margin-bottom: 4rem;
+  padding: 1.5rem 3.5rem; }
   .create-note-btn:hover, .create-note-btn:focus {
     background-color: #1F1F2E;
     color: #fff; }
@@ -82,19 +82,66 @@ body {
   left: 50vw;
   transform: translate(-50%, -50%);
   box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.3);
-  max-width: 60rem;
-  display: grid; }
+  max-width: 200rem;
+  display: flex;
+  flex-direction: column; }
 
 .create-note__cancel {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 2rem;
-  background-color: orange;
+  top: .6rem;
+  right: .6rem;
+  background: url(../icons/cancel.png);
+  background-size: cover;
   height: 2rem;
   width: 2rem;
-  border-radius: 50%;
-  columns: #fff; }
+  border: none;
+  outline: none;
+  border-radius: 100%; }
+  .create-note__cancel:active, .create-note__cancel:focus {
+    border: 1px solid #1F1F2E; }
+
+.create-note__title {
+  padding: 1rem;
+  border: 1px solid #798494;
+  border-radius: 4px;
+  outline: none; }
+  .create-note__title:active, .create-note__title:focus {
+    border: 1px solid #1F1F2E; }
+
+.create-note__content {
+  margin-top: 1rem;
+  resize: none;
+  padding: 1rem;
+  border: 1px solid #798494;
+  border-radius: 4px;
+  outline: none; }
+  .create-note__content:active, .create-note__content:focus {
+    border: 1px solid #1F1F2E; }
+
+.create-note__input-container {
+  margin: 1rem 0;
+  font-size: 1.6rem; }
+
+.create-note__confirm {
+  border: none;
+  text-transform: uppercase;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 300px;
+  background-color: #798494;
+  transition: all .2s;
+  cursor: pointer;
+  outline: none;
+  width: 7rem;
+  padding: .4rem .6rem;
+  margin: auto;
+  margin-top: 3rem; }
+  .create-note__confirm:hover, .create-note__confirm:focus {
+    background-color: #1F1F2E;
+    color: #fff; }
+  .create-note__confirm:active {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.3); }
 
 .hide {
   display: none; }

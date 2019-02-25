@@ -39,12 +39,10 @@ function editNote(clickedNote) {
     newNote.title.focus();
 }
 
-//when color input is changed
-// newNote.color.addEventListener('change', () => {
-//     // change popup's background color
-//     newNote.window.style.backgroundColor = newNote.color.value;
-// });
-
+function changeNewNotePopupColor() {
+    // change popup's background color
+    newNote.window.style.backgroundColor = newNote.color.value;
+}
 
 function closePopup() {
     newNote.background.classList.add('hide');
@@ -67,15 +65,15 @@ function createNote() {
     const color = newNote.color.value;
     const tags = [];
     const notificationDate = newNote.notification.value;
-
+    
     //save the note
     const note = new Note(title, content, isPinned, color, tags, notificationDate);
-
+    
     notes.push(note);
     note.display();
-
+    
     closePopup();
-
+    
     //add note to local storage
 }
 
@@ -92,10 +90,10 @@ function hideNewNotePopup(e) {
 function openNewNotePopup() {
     // reset values from inputs
     resetInput();
-
+    
     //reset popup window background color
     newNote.window.style.backgroundColor = '#ffffff';
-
+    
     newNote.background.classList.remove('hide'); //show popup
     newNote.title.focus();
 }
@@ -112,6 +110,8 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
 createNoteBtn.addEventListener('click', openNewNotePopup);
 newNote.background.addEventListener('click', hideNewNotePopup);
 newNote.confirm.addEventListener('click', createNote);

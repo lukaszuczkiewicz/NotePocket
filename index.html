@@ -15,13 +15,22 @@
     <div class="create-note__background hide" id="create-note__background">
         <form class="create-note__window" id="create-note__window">
             <input class="create-note__title" id="create-note__title" type="text" name="title" placeholder="Title...">
-            <input class="create-note__content" id="create-note__content" type="text" name="title" placeholder="Your note...">
-            <button type="button" class="create-note__cancel">X</bu>
-            <label for="create-note__pin">Pin</label>
-            <input type="checkbox" name="create-note__pin" id="create-note__pin">
-            <input type="color" name="create-note__color" id="create-note__color">
-            <input type="date" name="create-note__notification" id="create-note__notification">
-            <button type="button" class="create-note__confirm" id="create-note__confirm">OK</button>
+            <textarea class="create-note__content" id="create-note__content" rows="10" name="title" placeholder="Your note..."></textarea>
+            <button type="button" class="create-note__cancel"></button>
+            <div class="create-note__input-container">
+                <label for="create-note__pin">Pin</label>
+                <input type="checkbox" name="create-note__pin" id="create-note__pin">
+            </div>
+            <div class="create-note__input-container">                
+                <label for="create-note__color">Color</label>
+                <input type="color" name="create-note__color" id="create-note__color">
+            </div>
+            <div class="create-note__input-container">                
+                    <label for="create-note__pin">Notification date</label>
+                    <input type="date" name="create-note__notification" id="create-note__notification">
+            </div>
+           
+            <button type="button" class="create-note__confirm" id="create-note__confirm">Add</button>
         </form>
     </div>
 
