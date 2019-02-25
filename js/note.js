@@ -4,21 +4,19 @@ const otherNotes = document.querySelector('#other');
 
 export default class Note {
     constructor(title, content, isPinned, color, tags) {
+        this.id = new Date().getTime();
         this.title = title;
         this.content = content;
         this.isPinned = isPinned;
         this.color = color;
         this.tags = tags;
-        // this.notificationDate = notificationDate;
         this.notificationDate = false;
 
-        const date = new Date();
-        this.id = date.getTime();
-        
-        this.date = `${date.toLocaleDateString()} ${date.toLocaleTimeString().slice(0,5)}`;
+        this.date = null; 
+        // this.date = `${date.toLocaleDateString()} ${date.toLocaleTimeString().slice(0,5)}`;
     }
     display() {
-        const noteHtml = `
+        const noteTemplate = `
         <div class="notes__note" data-id="${this.id}">
             <h2 class="heading-2">${this.title}</h2>
             <p class="notes__note__date">${this.date}</p>
@@ -28,9 +26,9 @@ export default class Note {
         `;
 
         if (this.isPinned) {
-            pinnedNotes.innerHTML += noteHtml;
+            pinnedNotes.innerHTML += noteTemplate;
         } else {
-            otherNotes.innerHTML += noteHtml;
+            otherNotes.innerHTML += noteTemplate;
         }
 
         // set note color
