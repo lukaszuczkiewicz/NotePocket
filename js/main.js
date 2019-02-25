@@ -66,11 +66,10 @@ function createNote() {
     const isPinned = newNote.pin.checked;
     const color = newNote.color.value;
     const tags = [];
-    // const notificationDate = newNoteNotification.value;
+    const notificationDate = newNote.notification.value;
 
     //save the note
-    // const note = new Note(title, content, isPinned, color, tags, notificationDate);
-    const note = new Note(title, content, isPinned, color, tags);
+    const note = new Note(title, content, isPinned, color, tags, notificationDate);
 
     notes.push(note);
     note.display();
@@ -112,7 +111,6 @@ document.addEventListener('click', (e) => {
         })
     }
 });
-
 
 createNoteBtn.addEventListener('click', openNewNotePopup);
 newNote.background.addEventListener('click', hideNewNotePopup);
