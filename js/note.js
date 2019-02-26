@@ -5,7 +5,7 @@ const pinnedNotes = document.querySelector('#pinned');
 const otherNotes = document.querySelector('#others');
 
 class Note {
-    constructor(title, content, isPinned, color, tags, notificationDate, id = Date.now()) {
+    constructor(title, content, isPinned, color, tags, notificationDate, id, date) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -13,7 +13,7 @@ class Note {
         this.color = color;
         this.tags = tags;
         this.notificationDate = notificationDate;
-        this.date = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString().slice(0,5)}`;
+        this.date = date;
     }
     display() {
         let noteTemplate = `

@@ -65,7 +65,9 @@ function displayNotes(notesArr) {
     //hide or show pinned/others titles
     changeDisplayOfNotesTitles();
 }
-
+function getFormattedDate() {
+    return `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString().slice(0,5)}`;
+}
 function hideNotePopup(e) {
     if (e.target.classList.contains('create-note__background') || e.target.classList.contains('create-note__cancel')) {
         saveNote();
@@ -147,7 +149,8 @@ function saveNote() {
 
     if (status === 'add' && newNote.content.value) { //create a new note
 
-        const note = new Note(title, content, isPinned, color, tags, notificationDate);
+        const note = new Note(title, content, isPinned, color, tags, notificationDate, Date.now(),
+        getFormattedDate());
         notes.push(note);
 
         //add note to local storage
@@ -202,7 +205,7 @@ function localStorageGetAll() {
     });
 
     noteArr.forEach(n => {
-        const note = new Note(n.title, n.content, n.isPinned, n.color, n.tags, n.notificationDate, n.id);
+        const note = new Note(n.title, n.content, n.isPinned, n.color, n.tags, n.notificationDate, n.id, n.date);
         notes.push(note);
     });
 

@@ -1,25 +1,2 @@
 @import "base";
 @import "note";
-
-// Funkcjonalności:
-
-// Aplikacja pozwala na tworzenie i przechowywanie notatek. Każda notatka musi w minimalnej formie posiadać:
-
-// Tytuł
-// Treść
-// Kolor notatki
-// Możliwość przypięcia do góry na liście notatek
-// Datę utworzenia
-// Notatki powinny być zapisywane w localStorage i wyświetlane w formie tablicy notatek na stronie głównej aplikacji.
-
-// Przykłady: Google Keep, Evernote, Onenote
-
-// Wersja ciekawsza:
-
-// Zapisywanie daty przypomnień (i generowanie przypomnień w formie Notification)
-// Tagowanie notatek
-// Wyszukiwarka notatek (po wszystkich dostępnych pola notatki)
-// Wymagania do kodu:
-
-// Komentarze
-// Obiektowość
