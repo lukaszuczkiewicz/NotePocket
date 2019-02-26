@@ -1,8 +1,10 @@
+export {Note, pinnedNotes, otherNotes};
+
 //html note containers:
 const pinnedNotes = document.querySelector('#pinned');
 const otherNotes = document.querySelector('#other');
 
-export default class Note {
+class Note {
     constructor(title, content, isPinned, color, tags, notificationDate) {
         this.id = Date.now();
         this.title = title;
