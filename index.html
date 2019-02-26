@@ -22,19 +22,19 @@
                 <label for="create-note__pin">Pin</label>
                 <input type="checkbox" name="create-note__pin" id="create-note__pin">
             </div>
-            <div class="create-note__input-container">                
+            <div class="create-note__input-container">
                 <label for="create-note__color">Color</label>
                 <input type="color" name="create-note__color" id="create-note__color">
             </div>
-            <div class="create-note__input-container">                
-                    <label for="create-note__notification">Notification date</label>
-                    <input type="date" name="create-note__notification" id="create-note__notification">
+            <div class="create-note__input-container">
+                <label for="create-note__notification">Notification date</label>
+                <input type="date" name="create-note__notification" id="create-note__notification">
             </div>
-            <div class="create-note__input-container">                
-                    <label for="create-note__tags">Tags</label>
-                    <input type="text" name="create-note__tags" class="create-note__tags" id="create-note__tags">
+            <div class="create-note__input-container">
+                <label for="create-note__tags">Tags</label>
+                <input type="text" name="create-note__tags" class="create-note__tags" id="create-note__tags">
             </div>
-           
+
             <button type="button" class="create-note__confirm" id="create-note__confirm">OK</button>
         </form>
     </div>
@@ -49,6 +49,10 @@
     <main class="main">
         <button class="create-note-btn" id="create-note-btn">Create a new note</button>
 
+        <div class="filtered-info hide" id="filtered-info">
+            <span class="filtered-info__text"></span>
+            <button class="filtered-info__remove-btn"></button>
+        </div>
         <h3 class="heading-3 notes--pinned__title">Pinned</h3>
         <div class="notes notes--pinned" id="pinned"></div>
 

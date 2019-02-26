@@ -10,7 +10,13 @@ let status;
 let editedNote;
 
 //DOM ELEMENTS
+//search elements
 const searchForm = document.querySelector('.search__form');
+const searchInput = document.querySelector('.search__input');
+const filteredInfo = document.querySelector('.filtered-info');
+const filteredInfoText = document.querySelector('.filtered-info__text');
+const filteredInfoRemove = document.querySelector('.filtered-info__remove-btn');
+
 const createNoteBtn = document.querySelector('#create-note-btn');
 const newNote = {
     background: document.querySelector('#create-note__background'),
@@ -24,13 +30,6 @@ const newNote = {
     confirm: document.querySelector('#create-note__confirm'),
     remove: document.querySelector('#create-note__remove')
 };
-
-function resetInput() {
-    newNote.title.value = '';
-    newNote.content.value = '';
-    newNote.pin.checked = false;
-    newNote.color.value = '#ffffff';
-}
 
 function changeDisplayOfNotesTitles() {
     if (pinnedNotes.textContent) {
@@ -107,8 +106,7 @@ function saveNote() {
         notes[i].tags = tags;
         notes[i].notificationDate = notificationDate;
     }
-
-    displayNotes(notes);
+    removeSearch()
     closePopup();
 
     //add note to local storage
@@ -150,38 +148,61 @@ function openEditNotePopup(clickedNote) {
 
     editedNote = clickedNote;
 }
+function removeSearch() {
+    filteredInfo.classList.add('hide');
+    displayNotes(notes);
+}
+
+function resetInput() {
+    newNote.title.value = '';
+    newNote.content.value = '';
+    newNote.pin.checked = false;
+    newNote.color.value = '#ffffff';
+}
 
 function searchNotes(e) {
+    const searchedText = searchInput.value;
+
     if (e.keyCode === 13) {
         e.preventDefault();
 
-        const searchedText = document.querySelector('.search__input').value;
+        if (searchedText) { //there is any text
+            //filter the notes
+            const filteredNotes = notes.filter((note) => {
+                return (note.title.includes(searchedText) || note.content.includes(searchedText) || note.tags.includes(searchedText));
+            });
+            //display filtered info button
+            filteredInfo.classList.remove('hide');
+            filteredInfoText.textContent = searchedText;
 
-        const filteredNotes = notes.filter((note) => {
-            return (note.title.includes(searchedText) || note.content.includes(searchedText) || note.tags.includes(searchedText));
-        });
-        console.log(filteredNotes)
-        displayNotes(filteredNotes);
+            displayNotes(filteredNotes);
+
+            //clear search input text
+            searchInput.value = '';
+            
+        } else { //the search input was empty -> display all notes 
+            removeSearch();
+        }
     }
 }
 
-    //EVENT LISTENERS
-    searchForm.addEventListener('keydown', searchNotes)
-    newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
-    createNoteBtn.addEventListener('click', openNewNotePopup);
-    newNote.background.addEventListener('click', hideNotePopup);
-    newNote.confirm.addEventListener('click', saveNote);
-    newNote.remove.addEventListener('click', removeNote);
-    document.addEventListener('click', (e) => {
-        const element = e.target.closest('.notes__note');
-        if (element) {
-            notes.find(note => {
-                if (note.id == element.getAttribute('data-id')) {
-                    openEditNotePopup(note);
-                }
-            })
-        }
-    });
+//EVENT LISTENERS
+searchForm.addEventListener('keydown', searchNotes);
+filteredInfoRemove.addEventListener('click', removeSearch);
+newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
+createNoteBtn.addEventListener('click', openNewNotePopup);
+newNote.background.addEventListener('click', hideNotePopup);
+newNote.confirm.addEventListener('click', saveNote);
+newNote.remove.addEventListener('click', removeNote);
+document.addEventListener('click', (e) => {
+    const element = e.target.closest('.notes__note');
+    if (element) {
+        notes.find(note => {
+            if (note.id == element.getAttribute('data-id')) {
+                openEditNotePopup(note);
+            }
+        })
+    }
+});
 
-
-    changeDisplayOfNotesTitles();
+changeDisplayOfNotesTitles();

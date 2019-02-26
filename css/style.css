@@ -96,9 +96,11 @@ body {
   width: 2rem;
   border: none;
   outline: none;
-  border-radius: 100%; }
-  .create-note__remove:active, .create-note__remove:focus {
-    border: 1px solid #1F1F2E; }
+  border-radius: 100%;
+  cursor: pointer;
+  transition: transform .2s; }
+  .create-note__remove:hover, .create-note__remove:focus {
+    transform: scale(1.1); }
 
 .create-note__cancel {
   position: absolute;
@@ -110,9 +112,11 @@ body {
   width: 2rem;
   border: none;
   outline: none;
-  border-radius: 100%; }
-  .create-note__cancel:active, .create-note__cancel:focus {
-    border: 1px solid #1F1F2E; }
+  border-radius: 100%;
+  cursor: pointer;
+  transition: transform .2s; }
+  .create-note__cancel:hover, .create-note__cancel:focus {
+    transform: scale(1.1); }
 
 .create-note__title, .create-note__tags {
   padding: 1rem;
@@ -156,9 +160,6 @@ body {
   .create-note__confirm:active {
     transform: scale(1.05);
     box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.3); }
-
-.hide {
-  display: none; }
 
 .notes {
   margin-bottom: 4rem;
@@ -205,3 +206,29 @@ body {
   text-align: center;
   vertical-align: center;
   font-size: 1.4rem; }
+
+.filtered-info {
+  padding: 1rem 2rem;
+  background-color: #149bbd;
+  border-radius: 100px;
+  display: flex; }
+  .filtered-info__remove-btn {
+    background: url(../icons/cancel.png);
+    background-size: cover;
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    outline: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: transform .2s; }
+    .filtered-info__remove-btn:hover, .filtered-info__remove-btn:focus {
+      transform: scale(1.1); }
+  .filtered-info__text {
+    color: white;
+    text-transform: uppercase;
+    margin-right: 2rem;
+    font-size: 1.4rem; }
+
+.hide {
+  display: none; }

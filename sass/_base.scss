@@ -5,6 +5,7 @@ $color-2: #798494;
 $color-3: #9CA1A8;
 $color-4: #7C7381;
 $color-5: #1F1F2E;
+$color-6: #149bbd;
 $color-white: #fff;
 
 $footer-height: 4rem;
@@ -91,9 +92,11 @@ body {
     border: none;
     outline: none;
     border-radius: 100%;
+    cursor: pointer;
+    transition: transform .2s;      
 
-    &:active, &:focus {
-        border: 1px solid $color-5;
+    &:hover, &:focus {
+        transform: scale(1.1);
     }
 }
 //CREATE A NEW NOTE
@@ -175,9 +178,6 @@ body {
         margin-top: 3rem;
     }
 }
-.hide {
-    display: none; //disabled for testing
-}
 
 //NOTES
 .notes {
@@ -210,11 +210,7 @@ body {
             border: 2px $color-2 solid;
         }
     }
-    // &__title {
-        //     align-self: flex-start;
-        // }
-    }
-    
+}   
 //SECTIONS
 //HEADER
 .header {
@@ -242,4 +238,26 @@ body {
     text-align: center;
     vertical-align: center;
     font-size: 1.4rem;
+}
+//FILTERED NOTES - MESSAGE
+.filtered-info {
+    padding: 1rem 2rem;
+    background-color: $color-6;
+    border-radius: 100px;
+    display: flex;
+    
+    &__remove-btn {
+        background: url(../icons/cancel.png);
+        @include roundBtn;
+    }
+    &__text {
+        color: white;
+        text-transform: uppercase;
+        margin-right: 2rem;
+        font-size: 1.4rem;
+    }
+}
+
+.hide {
+    display: none; //disabled for testing
 }
