@@ -111,7 +111,7 @@ function removeNote() {
     closePopup();
     displayNotes(notes);
 
-    localStorageRemove(note);
+    localStorageRemove(editedNote);
 }
 
 function removeSearch() {
