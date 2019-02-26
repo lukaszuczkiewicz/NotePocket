@@ -49,29 +49,31 @@ function closePopup() {
 }
 
 function createNote() {
-    //read data from inputs
-    let title, content;
-    if (newNote.title.value) {
-        title = newNote.title.value;
-    } else {
-        title = "Untitled";
-    }
     if (newNote.content.value) {
-        content = newNote.content.value;
-    } else {
-        content = "...";
-    }
-    const isPinned = newNote.pin.checked;
-    const color = newNote.color.value;
-    const tags = [];
-    const notificationDate = newNote.notification.value;
-    
-    //save the note
-    const note = new Note(title, content, isPinned, color, tags, notificationDate);
-    
-    notes.push(note);
-    note.display();
-    
+
+        //read data from inputs
+        let title, content;
+        if (newNote.title.value) {
+            title = newNote.title.value;
+        } else {
+            title = "Untitled";
+        }
+        if (newNote.content.value) {
+            content = newNote.content.value;
+        } else {
+            content = "...";
+        }
+        const isPinned = newNote.pin.checked;
+        const color = newNote.color.value;
+        const tags = [];
+        const notificationDate = newNote.notification.value;
+        
+        //save the note
+        const note = new Note(title, content, isPinned, color, tags, notificationDate);
+        
+        notes.push(note);
+        note.display();
+    }       
     closePopup();
     
     //add note to local storage
@@ -79,11 +81,7 @@ function createNote() {
 
 function hideNewNotePopup(e) {
     if (e.target.classList.contains('create-note__background') || e.target.classList.contains('create-note__cancel')) {
-        if (newNote.content.value) {
-            createNote();
-        } else {
-            closePopup();
-        }
+        createNote();
     }
 }
 
