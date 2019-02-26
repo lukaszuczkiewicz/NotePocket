@@ -5,8 +5,8 @@ const pinnedNotes = document.querySelector('#pinned');
 const otherNotes = document.querySelector('#others');
 
 class Note {
-    constructor(title, content, isPinned, color, tags, notificationDate) {
-        this.id = Date.now();
+    constructor(title, content, isPinned, color, tags, notificationDate, id = Date.now()) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.isPinned = isPinned;

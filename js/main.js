@@ -66,52 +66,6 @@ function displayNotes(notesArr) {
     changeDisplayOfNotesTitles();
 }
 
-function removeNote() {
-    const i = notes.indexOf(editedNote);
-    const removed = notes.splice(i, 1);
-    closePopup();
-    displayNotes(notes);
-}
-
-function saveNote() {
-    //read data from inputs
-    let title, content;
-    if (newNote.title.value) {
-        title = newNote.title.value;
-    } else {
-        title = "Untitled";
-    }
-    if (newNote.content.value) {
-        content = newNote.content.value;
-    } else {
-        content = "...";
-    }
-    const isPinned = newNote.pin.checked;
-    const color = newNote.color.value;
-    const tags = newNote.tags.value;
-    const notificationDate = newNote.notification.value;
-
-
-    if (status === 'add' && newNote.content.value) { //create a new note
-
-        const note = new Note(title, content, isPinned, color, tags, notificationDate);
-        notes.push(note);
-
-    } else if (status === 'edit') { //update the note
-        const i = notes.indexOf(editedNote)
-        notes[i].title = title;
-        notes[i].content = content;
-        notes[i].isPinned = isPinned;
-        notes[i].color = color;
-        notes[i].tags = tags;
-        notes[i].notificationDate = notificationDate;
-    }
-    removeSearch()
-    closePopup();
-
-    //add note to local storage
-}
-
 function hideNotePopup(e) {
     if (e.target.classList.contains('create-note__background') || e.target.classList.contains('create-note__cancel')) {
         saveNote();
@@ -148,6 +102,16 @@ function openEditNotePopup(clickedNote) {
 
     editedNote = clickedNote;
 }
+
+function removeNote() {
+    const i = notes.indexOf(editedNote);
+    const removed = notes.splice(i, 1);
+    closePopup();
+    displayNotes(notes);
+
+    localStorageRemove(note);
+}
+
 function removeSearch() {
     filteredInfo.classList.add('hide');
     displayNotes(notes);
@@ -158,6 +122,49 @@ function resetInput() {
     newNote.content.value = '';
     newNote.pin.checked = false;
     newNote.color.value = '#ffffff';
+}
+
+function saveNote() {
+    //read data from inputs
+    let title, content;
+    if (newNote.title.value) {
+        title = newNote.title.value;
+    } else {
+        title = "Untitled";
+    }
+    if (newNote.content.value) {
+        content = newNote.content.value;
+    } else {
+        content = "...";
+    }
+    const isPinned = newNote.pin.checked;
+    const color = newNote.color.value;
+    const tags = newNote.tags.value;
+    const notificationDate = newNote.notification.value;
+
+
+    if (status === 'add' && newNote.content.value) { //create a new note
+
+        const note = new Note(title, content, isPinned, color, tags, notificationDate);
+        notes.push(note);
+
+        //add note to local storage
+        localStorageSet(note);
+
+    } else if (status === 'edit') { //update the note
+        const i = notes.indexOf(editedNote)
+        notes[i].title = title;
+        notes[i].content = content;
+        notes[i].isPinned = isPinned;
+        notes[i].color = color;
+        notes[i].tags = tags;
+        notes[i].notificationDate = notificationDate;
+
+        //add note to local storage
+        localStorageSet(note[i]);
+    }
+    removeSearch()
+    closePopup();
 }
 
 function searchNotes(e) {
@@ -179,11 +186,35 @@ function searchNotes(e) {
 
             //clear search input text
             searchInput.value = '';
-            
+
         } else { //the search input was empty -> display all notes 
             removeSearch();
         }
     }
+}
+
+function localStorageGetAll() {
+    let noteArr = [];
+    Object.keys(localStorage).forEach(key => {
+        noteArr.push(JSON.parse(localStorage.getItem(key)));
+    });
+
+    noteArr.forEach(n => {
+        const note = new Note(n.title, n.content, n.isPinned, n.color, n.tags, n.notificationDate, n.id);
+        notes.push(note);
+    });
+
+    displayNotes(notes);
+}
+localStorageGetAll();
+function localStorageSet(note) {
+    const key = String(note.id);
+    const value = JSON.stringify(note);
+    localStorage.setItem(key, value);
+}
+function localStorageRemove(note) {
+    const key = String(note.id);
+    localStorage.removeItem(key);
 }
 
 //EVENT LISTENERS
