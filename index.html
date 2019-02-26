@@ -27,8 +27,12 @@
                 <input type="color" name="create-note__color" id="create-note__color">
             </div>
             <div class="create-note__input-container">                
-                    <label for="create-note__pin">Notification date</label>
+                    <label for="create-note__notification">Notification date</label>
                     <input type="date" name="create-note__notification" id="create-note__notification">
+            </div>
+            <div class="create-note__input-container">                
+                    <label for="create-note__tags">Tags</label>
+                    <input type="text" name="create-note__tags" class="create-note__tags" id="create-note__tags">
             </div>
            
             <button type="button" class="create-note__confirm" id="create-note__confirm">OK</button>
@@ -48,7 +52,6 @@
         <h3 class="heading-3 notes--pinned__title">Pinned</h3>
         <div class="notes notes--pinned" id="pinned"></div>
 
-        <!-- <h3 class="heading-3 notes__title">Others</h3> -->
         <h3 class="heading-3 notes--others__title">Others</h3>
         <div class="notes notes--other" id="others"></div>
     </main>

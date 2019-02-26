@@ -22,12 +22,12 @@ class Note {
             <p class="notes__note__date">${this.date}</p>
             <p class="notes__note__content">${this.content}</p>`;
         if (this.notificationDate) {
-            noteTemplate += `<p class="notes__note__notification">ALARM: ${this.notificationDate}</p>
-            </div>`;
+            noteTemplate += `<p class="notes__note__notification">ALARM: ${this.notificationDate}</p>`;
         }
-        else {
-            noteTemplate += `</div>`
+        if (this.tags){
+            noteTemplate += `<p class="notes__note__tags">Tags: ${this.tags}</p>`;
         }
+        noteTemplate += `</div>`
 
         if (this.isPinned) {
             pinnedNotes.innerHTML += noteTemplate;

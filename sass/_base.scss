@@ -141,7 +141,7 @@ body {
         background: url(../icons/cancel.png);
         @include roundBtn;
     }
-    &__title {
+    &__title, &__tags {
         padding: 1rem;
         border: 1px solid $color-2;
         border-radius: 4px;

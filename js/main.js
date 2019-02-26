@@ -15,6 +15,7 @@ const newNote = {
     color: document.querySelector('#create-note__color'),
     pin: document.querySelector('#create-note__pin'),
     notification: document.querySelector('#create-note__notification'),
+    tags: document.querySelector('#create-note__tags'),
     confirm: document.querySelector('#create-note__confirm'),
     remove: document.querySelector('#create-note__remove')
 };
@@ -37,7 +38,6 @@ function changeDisplayOfNotesTitles() {
     } else {
         document.querySelector('.notes--others__title').classList.add('hide');
     }
-    debugger
 }
 
 function changeNewNotePopupColor() {
@@ -83,7 +83,7 @@ function saveNote() {
     }
     const isPinned = newNote.pin.checked;
     const color = newNote.color.value;
-    const tags = [];
+    const tags = newNote.tags.value;
     const notificationDate = newNote.notification.value;
 
     
