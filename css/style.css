@@ -31,7 +31,8 @@ body {
   color: #1F1F2E; }
 
 .heading-3 {
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  margin-bottom: .8rem; }
 
 .search__form {
   display: flex;
@@ -93,7 +94,7 @@ body {
   position: absolute;
   top: .6rem;
   right: 3rem;
-  background: url(../icons/delete.png);
+  background: url(../icons/remove.png);
   background-size: cover;
   height: 2rem;
   width: 2rem;
@@ -101,9 +102,10 @@ body {
   outline: none;
   border-radius: 100%;
   cursor: pointer;
-  transition: transform .2s; }
+  transition: all .2s;
+  backface-visibility: hidden; }
   .create-note__remove:hover, .create-note__remove:focus {
-    transform: scale(1.1); }
+    transform: scale(1.16); }
 
 .create-note__cancel {
   position: absolute;
@@ -117,9 +119,10 @@ body {
   outline: none;
   border-radius: 100%;
   cursor: pointer;
-  transition: transform .2s; }
+  transition: all .2s;
+  backface-visibility: hidden; }
   .create-note__cancel:hover, .create-note__cancel:focus {
-    transform: scale(1.1); }
+    transform: scale(1.16); }
 
 .create-note__title, .create-note__tags {
   padding: 1rem;
@@ -234,9 +237,10 @@ body {
     outline: none;
     border-radius: 100%;
     cursor: pointer;
-    transition: transform .2s; }
+    transition: all .2s;
+    backface-visibility: hidden; }
     .filtered-info__remove-btn:hover, .filtered-info__remove-btn:focus {
-      transform: scale(1.1); }
+      transform: scale(1.16); }
   .filtered-info__text {
     color: white;
     text-transform: uppercase;
