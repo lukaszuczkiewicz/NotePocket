@@ -2,7 +2,7 @@ export {Note, pinnedNotes, otherNotes};
 
 //html note containers:
 const pinnedNotes = document.querySelector('#pinned');
-const otherNotes = document.querySelector('#other');
+const otherNotes = document.querySelector('#others');
 
 class Note {
     constructor(title, content, isPinned, color, tags, notificationDate) {

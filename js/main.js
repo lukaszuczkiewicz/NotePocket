@@ -26,6 +26,20 @@ function resetInput() {
     newNote.color.value = '#ffffff';
 }
 
+function changeDisplayOfNotesTitles() {
+    if (pinnedNotes.textContent) {
+        document.querySelector('.notes--pinned__title').classList.remove('hide');
+    } else {
+        document.querySelector('.notes--pinned__title').classList.add('hide');
+    }
+    if (otherNotes.textContent) {
+        document.querySelector('.notes--others__title').classList.remove('hide');
+    } else {
+        document.querySelector('.notes--others__title').classList.add('hide');
+    }
+    debugger
+}
+
 function changeNewNotePopupColor() {
     // change popup's background color
     newNote.window.style.backgroundColor = newNote.color.value;
@@ -43,8 +57,10 @@ function displayNotes() {
     notes.forEach(note => {
         note.display();
     });
-}
 
+    //hide or show pinned/others titles
+    changeDisplayOfNotesTitles();
+}
 function removeNote() {
     const i = notes.indexOf(editedNote);
     const removed  = notes.splice(i, 1);
@@ -146,3 +162,6 @@ document.addEventListener('click', (e) => {
         })
     }
 });
+
+
+changeDisplayOfNotesTitles();
