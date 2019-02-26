@@ -86,6 +86,20 @@ body {
   display: flex;
   flex-direction: column; }
 
+.create-note__remove {
+  position: absolute;
+  top: .6rem;
+  right: 3rem;
+  background: url(../icons/delete.png);
+  background-size: cover;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 100%; }
+  .create-note__remove:active, .create-note__remove:focus {
+    border: 1px solid #1F1F2E; }
+
 .create-note__cancel {
   position: absolute;
   top: .6rem;

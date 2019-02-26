@@ -84,6 +84,18 @@ body {
         box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.3);
     }
 }
+@mixin roundBtn {
+    background-size: cover;
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    outline: none;
+    border-radius: 100%;
+
+    &:active, &:focus {
+        border: 1px solid $color-5;
+    }
+}
 //CREATE A NEW NOTE
 .create-note-btn {
     @include btn;
@@ -115,21 +127,19 @@ body {
         display: flex;
         flex-direction: column;
     }
+    &__remove {
+        position: absolute;
+        top: .6rem;
+        right: 3rem;
+        background: url(../icons/delete.png);
+        @include roundBtn;
+    }
     &__cancel {
         position: absolute;
         top: .6rem;
         right: .6rem;
         background: url(../icons/cancel.png);
-        background-size: cover;
-        height: 2rem;
-        width: 2rem;
-        border: none;
-        outline: none;
-        border-radius: 100%;
-
-        &:active, &:focus {
-            border: 1px solid $color-5;
-        }
+        @include roundBtn;
     }
     &__title {
         padding: 1rem;

@@ -7,7 +7,6 @@ let editedNote;
 
 //DOM ELEMENTS
 const createNoteBtn = document.querySelector('#create-note-btn');
-
 const newNote = {
     background: document.querySelector('#create-note__background'),
     window: document.querySelector('#create-note__window'),
@@ -16,7 +15,8 @@ const newNote = {
     color: document.querySelector('#create-note__color'),
     pin: document.querySelector('#create-note__pin'),
     notification: document.querySelector('#create-note__notification'),
-    confirm: document.querySelector('#create-note__confirm')
+    confirm: document.querySelector('#create-note__confirm'),
+    remove: document.querySelector('#create-note__remove')
 };
 
 function resetInput() {
@@ -43,6 +43,13 @@ function displayNotes() {
     notes.forEach(note => {
         note.display();
     });
+}
+
+function removeNote() {
+    const i = notes.indexOf(editedNote);
+    const removed  = notes.splice(i, 1);
+    closePopup();
+    displayNotes();
 }
 
 function saveNote() {
@@ -100,12 +107,14 @@ function openNewNotePopup() {
     newNote.window.style.backgroundColor = '#ffffff';
 
     newNote.background.classList.remove('hide'); //show popup
+    newNote.remove.classList.add('hide'); //hide remove btn
     newNote.title.focus();
 }
 
 function openEditNotePopup(clickedNote) {
     status = "edit";
     newNote.background.classList.remove('hide'); //show popup
+    newNote.remove.classList.remove('hide'); //show remove btn
     newNote.title.focus();
 
     //load inputs
@@ -125,7 +134,8 @@ function openEditNotePopup(clickedNote) {
 newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
 createNoteBtn.addEventListener('click', openNewNotePopup);
 newNote.background.addEventListener('click', hideNotePopup);
-newNote.confirm.addEventListener('click', saveNote)
+newNote.confirm.addEventListener('click', saveNote);
+newNote.remove.addEventListener('click', removeNote);
 document.addEventListener('click', (e) => {
     const element = e.target.closest('.notes__note');
     if (element) {
