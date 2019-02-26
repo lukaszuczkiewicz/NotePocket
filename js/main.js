@@ -96,6 +96,8 @@ function openEditNotePopup(clickedNote) {
     newNote.content.value = clickedNote.content;
     newNote.pin.checked = clickedNote.isPinned;
     newNote.color.value = clickedNote.color;
+    newNote.notification.value = clickedNote.notificationDate;
+    newNote.tags.value = clickedNote.tags;
 
     //change popup bg color
     newNote.window.style.backgroundColor = clickedNote.color;
@@ -161,7 +163,7 @@ function saveNote() {
         notes[i].notificationDate = notificationDate;
 
         //add note to local storage
-        localStorageSet(note[i]);
+        localStorageSet(notes[i]);
     }
     removeSearch()
     closePopup();
