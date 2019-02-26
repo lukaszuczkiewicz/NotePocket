@@ -30,6 +30,9 @@ body {
   line-height: 1;
   color: #1F1F2E; }
 
+.heading-3 {
+  font-size: 1.6rem; }
+
 .search__form {
   display: flex;
   justify-content: center; }
@@ -175,9 +178,18 @@ body {
     background-color: #fff;
     transition: all .2s;
     cursor: pointer; }
-    .notes__note__content {
-      font-size: 1.4rem; }
     .notes__note__date {
+      color: #7C7381;
+      font-size: 1.3rem;
+      margin-bottom: 1rem; }
+    .notes__note__content {
+      font-size: 1.6rem;
+      margin-bottom: 2rem; }
+    .notes__note__notification {
+      color: #149bbd;
+      font-size: 1.3rem;
+      font-weight: 700; }
+    .notes__note__tags {
       color: #1F1F2E;
       font-size: 1.3rem; }
     .notes__note:hover {
@@ -211,7 +223,8 @@ body {
   padding: 1rem 2rem;
   background-color: #149bbd;
   border-radius: 100px;
-  display: flex; }
+  display: flex;
+  margin-bottom: 2.6rem; }
   .filtered-info__remove-btn {
     background: url(../icons/cancel.png);
     background-size: cover;

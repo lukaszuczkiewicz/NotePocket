@@ -22,7 +22,7 @@ class Note {
             <p class="notes__note__date">${this.date}</p>
             <p class="notes__note__content">${this.content}</p>`;
         if (this.notificationDate) {
-            noteTemplate += `<p class="notes__note__notification">ALARM: ${this.notificationDate}</p>`;
+            noteTemplate += `<p class="notes__note__notification">WHEN: ${this.notificationDate}</p>`;
         }
         if (this.tags){
             noteTemplate += `<p class="notes__note__tags">Tags: ${this.tags}</p>`;
