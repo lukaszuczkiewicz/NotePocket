@@ -1,4 +1,8 @@
-import {Note, pinnedNotes, otherNotes} from './note.js';
+import {
+    Note,
+    pinnedNotes,
+    otherNotes
+} from './note.js';
 
 //VARIABLES
 let notes = [];
@@ -6,6 +10,7 @@ let status;
 let editedNote;
 
 //DOM ELEMENTS
+const searchForm = document.querySelector('.search__form');
 const createNoteBtn = document.querySelector('#create-note-btn');
 const newNote = {
     background: document.querySelector('#create-note__background'),
@@ -49,23 +54,24 @@ function closePopup() {
     newNote.background.classList.add('hide');
 }
 
-function displayNotes() {
+function displayNotes(notesArr) {
     // reset previously displayed notes
     pinnedNotes.innerHTML = '';
     otherNotes.innerHTML = '';
 
-    notes.forEach(note => {
+    notesArr.forEach(note => {
         note.display();
     });
 
     //hide or show pinned/others titles
     changeDisplayOfNotesTitles();
 }
+
 function removeNote() {
     const i = notes.indexOf(editedNote);
-    const removed  = notes.splice(i, 1);
+    const removed = notes.splice(i, 1);
     closePopup();
-    displayNotes();
+    displayNotes(notes);
 }
 
 function saveNote() {
@@ -86,9 +92,9 @@ function saveNote() {
     const tags = newNote.tags.value;
     const notificationDate = newNote.notification.value;
 
-    
+
     if (status === 'add' && newNote.content.value) { //create a new note
-        
+
         const note = new Note(title, content, isPinned, color, tags, notificationDate);
         notes.push(note);
 
@@ -102,7 +108,7 @@ function saveNote() {
         notes[i].notificationDate = notificationDate;
     }
 
-    displayNotes();
+    displayNotes(notes);
     closePopup();
 
     //add note to local storage
@@ -145,23 +151,37 @@ function openEditNotePopup(clickedNote) {
     editedNote = clickedNote;
 }
 
+function searchNotes(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
 
-//EVENT LISTENERS
-newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
-createNoteBtn.addEventListener('click', openNewNotePopup);
-newNote.background.addEventListener('click', hideNotePopup);
-newNote.confirm.addEventListener('click', saveNote);
-newNote.remove.addEventListener('click', removeNote);
-document.addEventListener('click', (e) => {
-    const element = e.target.closest('.notes__note');
-    if (element) {
-        notes.find(note => {
-            if (note.id == element.getAttribute('data-id')) {
-                openEditNotePopup(note);
-            }
-        })
+        const searchedText = document.querySelector('.search__input').value;
+
+        const filteredNotes = notes.filter((note) => {
+            return (note.title.includes(searchedText) || note.content.includes(searchedText) || note.tags.includes(searchedText));
+        });
+        console.log(filteredNotes)
+        displayNotes(filteredNotes);
     }
-});
+}
+
+    //EVENT LISTENERS
+    searchForm.addEventListener('keydown', searchNotes)
+    newNote.color.addEventListener('change', changeNewNotePopupColor) //when color input is changed
+    createNoteBtn.addEventListener('click', openNewNotePopup);
+    newNote.background.addEventListener('click', hideNotePopup);
+    newNote.confirm.addEventListener('click', saveNote);
+    newNote.remove.addEventListener('click', removeNote);
+    document.addEventListener('click', (e) => {
+        const element = e.target.closest('.notes__note');
+        if (element) {
+            notes.find(note => {
+                if (note.id == element.getAttribute('data-id')) {
+                    openEditNotePopup(note);
+                }
+            })
+        }
+    });
 
 
-changeDisplayOfNotesTitles();
+    changeDisplayOfNotesTitles();
